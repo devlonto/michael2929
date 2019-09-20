@@ -1,0 +1,162 @@
+body{
+    font:15/1.5 arial helvetica,sans-serif;
+    margin: 0;
+    padding: 0;
+    background: dimgray;
+}
+
+ul{
+    margin:0;
+    padding: 0;
+}
+
+header h2{
+	color: #fff;
+	text-align: center;
+	margin-top: 20px;
+}
+h3{
+	background-color: #DC4B34;
+	color: #fff;
+	padding: 20px;
+	display: inline-block;
+	border-radius: 300px;
+	font-weight: bolder;
+	font-size: 20px;
+	position: relative;	
+	right:-550;
+	margin-top: -30px;
+}
+
+.btn-group{
+	padding: 1em 1em;
+	margin:10px;
+}
+
+
+.btn{
+	padding: 1em 1em;
+	border-radius: 30px;
+}
+
+.click{
+	border-radius: 300px;
+}
+
+.dropdown-menu:hover{
+	background-color: #C82333;
+	transition: all 6s;
+	transform: scale(1.1);
+}
+
+.dropdown-item:hover{
+	transition:1s;
+	transform: scale(1.1);
+}
+
+
+h3:hover{
+	background-color: red;
+	transition: all 1s;
+	transform: scale(1.1);
+}
+
+img{
+	width: 800;
+	height: 600;
+	margin-left: 20%;
+	margin-bottom: 40px;
+}
+
+/*HTML FLEX*/
+.center{
+	color:#fff;
+	text-align: center;
+	margin-bottom: 20px;
+	color: #111111;
+}
+
+.back{
+	color: #fff;
+	margin-bottom: 40px;
+	font-size: 20px;
+}
+
+.flex_body{
+	display: flex;
+	justify-content: space-around;
+}
+
+.flexone{
+	border:#333 3px solid;
+	padding: 30px;
+	margin-bottom: 30px;
+	border-top:none;
+	border-bottom: none;
+	border-right: none;
+}
+
+/*images in flex box*/
+.img,.handbook{
+	display: flex;
+	justify-content: flex-start;
+	justify-content: space-around;
+}
+.one_hover:hover,.two_hover:hover,.three_hover:hover{
+	transition:all 3s;
+	transform: scale(0.8);
+}
+.four_hover:hover,.five_hover:hover,.six_hover:hover{
+	transition: all 3s;
+	transform:scale(1.1);
+	-o-transform:(40deg);
+	-ms-transform: (40deg);
+	transform: rotate(-20deg);
+	/*/
+	--more property you can use--
+	skew
+	/*/
+}
+
+.find_1{
+	display: flex;
+	justify-content: center;
+}
+
+#mylink{
+	margin-bottom: 20px;
+}
+
+.locate{
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 20px;
+	font-size: 20px;
+}
+a{
+	color: #fff;
+}
+
+a:hover{
+	border-bottom-style: dotted;
+	color:blue;
+}
+
+h4{
+	padding: 10px;
+	box-shadow: 10px 10px 10px 10px #E2E2E2;
+	margin-bottom: 30px;
+	text-align:center;
+	background-color: red;
+}
+
+
+footer{
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 20px;
+	padding-right: 20px;
+	padding-left: 20px;
+	margin-bottom: 10px;
+}

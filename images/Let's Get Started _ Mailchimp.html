@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<!-- In sign up we don't want any nav. That's probably the only reason for this. -->
+<html> <head> <title>Plan Selector | Mailchimp</title>  <meta charset="utf-8"> <meta name="copyright" content="Copyright (c) 2019 Mailchimp. All Rights Reserved."> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover"> <meta name="apple-mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-status-bar-style" content="black">  <meta content="//mailchimp.com/browserconfig.xml" name="msapplication-config"> <meta content="#FFE01B" name="msapplication-TileColor">  <link href="https://cdn-images.mailchimp.com/favicons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"> <link href="https://cdn-images.mailchimp.com/favicons/touch-icon-192.png" rel="icon" sizes="192x192">  <link rel="shortcut icon" href="https://cdn-images.mailchimp.com/favicons/favicon.ico">  <link rel="mask-icon" href="https://cdn-images.mailchimp.com/favicons/mask-icon.svg" color="#241C15">  <link rel="stylesheet" type="text/css" href="/release/1.1.1b1efd4dd03870d17652c22eda60802c5fe212a52/css/less/typefaces.css"> <link rel="stylesheet" type="text/css" href="/release/1.1.1b1efd4dd03870d17652c22eda60802c5fe212a52/css/less/application.css">     
+
+     <meta name="referrer" content="origin">   <script mc:noreorder>
+    window.gtmData = {
+        hasUser: true,
+        userId: 121668790,
+        loginId: "334e9d1cbe0039663d40e9de275c5a98",
+        UA: "UA-329148-81",
+        version: "1",
+        gaDimensions: [],
+        deferToGTM: false    };
+
+    (function /* gtmAPI */ () {
+
+        function buildCustomDimensions() {
+            var result = { 9: window.gtmData.version.toString() };
+            if(window.gtmData.hasUser) {
+                result[8] = window.gtmData.userId.toString();
+                result[24] = window.gtmData.loginId.toString();
+            }
+
+            var dims = window.gtmData.gaDimensions;
+            Object.keys(dims).forEach(function(dim) {
+                var index = parseInt(dim.replace('dimension', ''));
+                if(!isNaN(index)) {
+                    // sometimes things get into this array that are not numbered dimensions
+                    result[index] = dims[dim];
+                }
+            });
+            return result;
+        }
+
+        function gtmPayload(hitType, data) {
+            data = data || {};
+
+            data['_gtm_deferred'] = window.gtmData.deferToGTM;
+            data['type'] = hitType;
+            data['UA'] = window.gtmData.UA;
+            data['customDimensions'] = buildCustomDimensions();
+
+            data['customVariables'] = data['customVariables'] || {};
+            data['customVariables']['eventSource'] = 'gtm';
+            return data;
+        }
+
+        /**
+         * Records a GTM event, with custom variables. Accepts either:
+         *
+         *   gtmEvent('event category', { 'foo': 'bar' })
+         *
+         * or:
+         *
+         *   gtmEvent({
+         *     'eventCategory': 'event category',
+         *     'eventAction': 'event action',
+         *     'eventLabel': 'etc',
+         *     'eventValue': 1
+         *    }, { 'foo': 'bar' })
+         *
+         * For eventInfo guidelines see:
+         *   https://support.google.com/analytics/answer/1033068?hl=en
+         */
+        window.gtmEvent = function(eventInfo, customVariables) {
+            if(typeof eventInfo === 'string') {
+                eventInfo = { 'eventCategory': eventInfo };
+            }
+            customVariables = customVariables || {};
+
+            var event = gtmPayload('EVENT', {
+                'event': 'e_action',
+                'eventInfo': eventInfo,
+                'customVariables': customVariables
+            });
+
+            window.dataLayer.push(event);
+        };
+
+        window.dataLayer = [gtmPayload('PAGE')];
+    })();
+</script>  <script mc:noreorder>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MCZTKL');
+    // setup the GA command queue
+    window['GoogleAnalyticsObject'] = '_ga';
+    window._ga = window._ga || function() {
+        window._ga.q = window._ga.q || [];
+        window._ga.q.push(arguments);
+    };
+</script>
+
+
+ <script mc:noreorder>
+    function debuglog() {
+        if(typeof window._debug_analytics !== 'undefined' && window._debug_analytics) {
+            console.log.apply(console, arguments);
+        }
+    }
+
+    window.ga = function /*decoratedGoogleAnalytics*/() {
+        var args = [].slice.call(arguments, 0);
+        if (typeof args[0] === 'string'
+            && args[0] !== 'create'
+            && args[0] !== 'provide') {
+            args[0] = 't0.' + args[0];
+        }
+        debuglog('ga', args);
+        return _ga.apply(this, args);
+    };
+
+    (function /*initializeGoogleAnalytics*/() {
+        var gtmData = window.gtmData;
+
+        var dimensions = {
+            USER_ID: 'dimension8',
+            LOGIN_ID: 'dimension24',
+            TRACKING_VERSION: 'dimension9'
+        };
+
+        function trackGA() {
+            if (gtmData.hasUser) {
+                ga("create", gtmData.UA, "auto", {
+                    allowLinker: false,
+                    userId: gtmData.userId,
+                    name: 't0'
+                });
+
+                ga("set", dimensions.USER_ID, gtmData.userId.toString());
+                ga("set", dimensions.LOGIN_ID, gtmData.loginId.toString());
+            } else {
+                ga("create", gtmData.UA, "auto", {
+                    allowLinker: false,
+                    name: 't0'
+                });
+            }
+
+            ga("set", "transport", "beacon");
+
+            ga("set", dimensions.TRACKING_VERSION, gtmData.version);
+
+            ga("require","linker");
+            ga("linker:autoLink", [/(.*\.)?mailchimp(app)?\.com$/], !1,!0);
+
+            // Add logging in the console for interesting params
+            // see: https://developers.google.com/analytics/devguides/collection/analyticsjs/tasks
+            // TODO: Move logging into a UI (details TBD)
+            ga(function (tracker) {
+                var originalSendHitTask = tracker.get("sendHitTask");
+                tracker.set("sendHitTask", function(model) {
+                    originalSendHitTask(model);
+                    var payload = model.get("hitPayload");
+
+                    if ("URLSearchParams" in window) {
+                        var params = new URLSearchParams(payload.toString());
+
+                        var t = params.get('t');
+                        var ec = params.get('ec');
+                        var ea = params.get('ea');
+                        var el = params.get('el');
+
+                        console.group("%cEvent tracking", "color: #241C15; background-color: #FF3EBF; padding: 4px; font-weight: 400;");
+                        console.log("Hit type (t)\t\t", t);
+                        console.log("Event category (ec)\t", ec);
+                        console.log("Event action (ea)\t", ea);
+                        console.log("Event label (el)\t", el);
+                        console.groupEnd();
+
+                        /**
+                         * Dispatch custom track event to all subscribers/listeners
+                         * @see: web/js/src/shared/core/dev-tools/DevTools/DevToolsPanel/tabs/Analytics/index.js
+                         */
+                        window.dispatchEvent(
+                            new CustomEvent('mc:track', {
+                                detail: { t, ec, ea, el, date: Date.now() },
+                            }),
+                        );
+                    }
+                });
+            });
+
+            ga("send", "pageview", gtmData.gaDimensions);
+        }
+
+        if (typeof window.ga === 'function' && !gtmData.deferToGTM) {
+            trackGA();
+        }
+    })();
+
+    (function () {
+        function getCookie(check_name) {
+            var a_all_cookies = document.cookie.split(';');
+            var a_temp_cookie = '';
+            var cookie_name = '';
+            var cookie_value = '';
+            var b_cookie_found = false;
+
+            for (i = 0; i < a_all_cookies.length; i++) {
+                a_temp_cookie = a_all_cookies[i].split('=');
+                cookie_name = a_temp_cookie[0].replace(/^\s+|\s+$/g, '');
+                if (cookie_name === check_name) {
+                    b_cookie_found = true;
+                    if (a_temp_cookie.length > 1) {
+                        cookie_value = unescape(a_temp_cookie[1].replace(/^\s+|\s+$/g, ''));
+                    }
+                    return cookie_value;
+                }
+                a_temp_cookie = null;
+                cookie_name = '';
+            }
+
+            if (!b_cookie_found) {
+                return null;
+            }
+        }
+        // Save tracking id and client id to a cookie so we can use them server side
+        setTimeout(function () {
+            if (typeof window.ga === 'function' && !getCookie('_mcga')) {
+                ga(function (tracker) {
+                    var gaData = {
+                        tid: tracker.get('trackingId'),
+                        cid: tracker.get('clientId')
+                    };
+                    document.cookie = '_mcga=' + JSON.stringify(gaData) + ';path=/;domain=.mailchimp.com';
+                });
+            }
+        }, 1);
+    })();
+</script>      </head> <body id="login" class=" mcd selfclear overflow-auto">  <noscript> <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MCZTKL" height="0" width="0" style="display:none;visibility:hidden"> </iframe> </noscript>         <div class="main-content mc-content"> <div data-mc-el="paywallContainer" class="margin--lv2 margin-left-right--lv0"></div> </div> <script type="text/javascript">
+    var xhr_open = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
+        xhr_open.call(this, method, url, async, user, password);
+        if (url.match(/^\/(?!\/)+/)) {
+            this.setRequestHeader('X-CSRF-Token', 'b11c72c96de688b12d9bd22e2e8e80df4b49b0b5');
+        }
+    }
+</script><script src="/release/1.1.1b1efd4dd03870d17652c22eda60802c5fe212a52/js/dojo/dojo.js" data-dojo-config="parseOnLoad: true, usePlainJson: true, isDebug: false"></script><script src="/release/1.1.1b1efd4dd03870d17652c22eda60802c5fe212a52/js/dojo/mccommon.js"></script><script type="text/javascript">
+    // The following dojo require places mojo.utils on the window.
+    // Many html files and javascript views rely on this property existing.
+    // Search for "mojo.utils" in any *.html files, and you'll find the hundreds of cases.
+    // Leaving this for historical reasons, but eventually migrating those usages would be good.
+    dojo.require("mojo.utils");
+
+    require(["mojo/widgets/Dialog"]);
+
+    // Leaving it globally since we used it around
+    window.rootUrl = '/';
+
+    require([
+        "dojo/query",
+    ], function (query) {
+        // captcha takes a global function to callback
+        window.captchaSuccess = function () {
+            query('[data-mc-el="captchaAutoSubmit"]')[0].submit();
+        };
+    });
+
+    require([
+        "dojo/_base/lang",
+        "mojo/user",
+        "mojo/context",
+    ], function (lang, user, context) {
+        // Add defaults to the actual modules.
+
+        lang.mixin(context, {
+            'rootUrl': '/',
+
+            'proxyBaseUrl': "https:\/\/d2q0qd5iz04n9u.cloudfront.net\/_ssl\/proxy.php",
+
+            'listManageDomain': "gmail.us3.list-manage.com",
+
+            'pusherKey': "74d7188a67461f12439a",
+
+            'cdnImagesDomain': "cdn-images.mailchimp.com",
+
+            'galleryDomain': "gallery.mailchimp.com",
+
+            'avestaEnvironment': "prod",
+
+            "imageEditorUrl": "https:\/\/dme0ih8comzn4.cloudfront.net\/imaging\/v3\/editor.js",
+
+            "imageEditorKey": "0e6dcf36c54b4faf965e45884a3dcf30",
+
+            "solvvyUrl": "\/js\/vendor\/solvvy\/solvvy_v3.js",
+
+            "enabledFlags": ["mobile.android.5.7.subscribers_new_pager","mobile.android.5.6.add_contact","mobile.iphone.5.6.explore_phase_2","mobile.android.5.6.explore_phase_2","mobile.iphone.5.5.explore_tab","mobile.android.5.5.explore_tab","mobile.android.5.5.report_detail_ecomm_fragment_mvvm","mobile.android.5.5.notification_settings_mvvm","mobile.iphone.5.5.one_list_onboarding","mobile.android.5.5.one_list_onboarding","mobile.iphone.5.5.audience_settings_update","mobile.android.5.5.audience_settings_update","mobile.iphone.5.5.audience_tab_update","mobile.android.5.5.refresh_audience_tab","mobile.android.5.5.audience_tab_update","mobile.iphone.5.6.social_reporting","mobile.android.5.6.social_reporting","compliance_cross_account_gallery_policy","compliance_mcuribl_alternate_unroller","support_ref_log","zendesk_chat_required_fields","delivery_dkim_lowercase_i_tag","adyen_turnoff","channels.neapolitan.drop_zone_event","channels.square.no_product_block_usage","channels.postcards_usabilla_survey","channels.google_analytics_v3","channels.twitter_verify_connection","channels.confetti","gdpr.require_fields","automations_social_post","automation_front_door_left_slat","met_mctx_open_click_tracking","ignore_egp_spam_trap","zendesk_customer_tier","zendesk_customer_tier_chat","no_user_chat","facebook_api_upgrade","pricing_email_form","mcadmin_okta","ads_fb_retargeting","refactor_high_vol_send","save_last_api_activity","mandrill_signup_permitted","speed_up_ecomm_category_query","subscribe_post_throttler_logging","mcadmin_delete_store_button","save_customer_within_list_management","es_segment_test_count","partner_platform_api_utma","partner_platform_api_root_ping","shopify_marketing_event_outreach","shopify_marketing_event_ad","ecommerce_customer_calculations","pylp_ad_reporting","fb_ad_gifs","fb_pixel_creation","facebook.ads.publishing_enabled","retry_login_cacheclient","nd.circuit_breaker.wind_down","nd.shopsync.update_source","sites.tos_feature_pauses","eventbrite_affiliate_links","ecommerce_transactional_opt_in","enable_pfree_chat_support","gpaid.usabilla_survey_cookie","segmentation_feature_parity_batch2","paypal_slab_removal","ga_reports_fix","revenue.log_retier_opportunities","adyen_client_guzzle","dkim_options","revenue.retier_notification","revenue.net_new_free_on_whole_audience_count","gdpr.link_tracking","autoloader_spy_enabled","remove_login_flashblock","front_end_rum","add_tag_api_logging","billing_replace_deprecated","text_filter_html_removal","partner_exp.video","get_content_from_url_guzzle","mcmta_client_guzzle","security.quote_segment_conditions","security.login_cookie_test_removal","no_reply_billing","gpaid.post_import_banner_audience_size","mobile_content_selection","improve_landing_page_stats","gpaid.use_order_payment_service","gpaid.use_order_payment_service_for_dlocal","automations_lazily_load_settings_html","user_setting_dne","user_setting_exists","gact.usabilla_neopolitan","mc_hash_db_exists_templates","automation_optimize_ux_for_tags","crm_process_updates","template_styles_caching","template_replicate_gcs_improvement"],
+
+            "bridgeBundles": {"vendor.js":"\/release\/1.1.1b1efd4dd03870d17652c22eda60802c5fe212a52\/js-src\/vendor.40547699.js","social-posts.css":"\/release\/1.1.1b1efd4dd03870d17652c22eda60802c5fe212a52\/js-src\/social-posts.afcfbecc.css","social-posts.js":"\/release\/1.1.1b1efd4dd03870d17652c22eda60802c5fe212a52\/js-src\/social-posts.afcfbecc.js","paywall.css":"\/release\/1.1.1b1efd4dd03870d17652c22eda60802c5fe212a52\/js-src\/paywall.afcfbecc.css","paywall.js":"\/release\/1.1.1b1efd4dd03870d17652c22eda60802c5fe212a52\/js-src\/paywall.afcfbecc.js","campaign-calendar.css":"\/release\/1.1.1b1efd4dd03870d17652c22eda60802c5fe212a52\/js-src\/campaign-calendar.afcfbecc.css","campaign-calendar.js":"\/release\/1.1.1b1efd4dd03870d17652c22eda60802c5fe212a52\/js-src\/campaign-calendar.afcfbecc.js"},
+
+            "googleOAuth2": {
+                "clientId": "964489109950.apps.googleusercontent.com",
+                "browserKey": "AIzaSyDHWeEm7vJ952wojVZbYhY5gg7xH5RW7oU",
+            },
+        });
+
+                lang.mixin(user, {
+            '__csrfToken': "b11c72c96de688b12d9bd22e2e8e80df4b49b0b5",
+
+            'role': "owner",
+
+            'type': "Free Trial",
+
+            'userId': 121668790,
+
+            'loginId': 130937226,
+
+            'email': "Michael.oshineye@gmail.com",
+
+            'settings': {
+                'pageSize': 25,
+                'fileManagerShowGrid': false            },
+
+                            'avatarUrl': "https:\/\/secure.gravatar.com\/avatar\/494b54891eb4ef11b8b664f451b4a5f2.jpg?s=300&d=https%3A%2F%2Fcdn-images.mailchimp.com%2Ficons%2Fletter-avatars%2Fm.png",
+            
+            'pro': false,
+
+            'pro_import_complete': false,
+
+            'flags': ["mobile.android.5.7.subscribers_new_pager","mobile.android.5.6.add_contact","mobile.iphone.5.6.explore_phase_2","mobile.android.5.6.explore_phase_2","mobile.iphone.5.5.explore_tab","mobile.android.5.5.explore_tab","mobile.android.5.5.report_detail_ecomm_fragment_mvvm","mobile.android.5.5.notification_settings_mvvm","mobile.iphone.5.5.one_list_onboarding","mobile.android.5.5.one_list_onboarding","mobile.iphone.5.5.audience_settings_update","mobile.android.5.5.audience_settings_update","mobile.iphone.5.5.audience_tab_update","mobile.android.5.5.refresh_audience_tab","mobile.android.5.5.audience_tab_update","mobile.iphone.5.6.social_reporting","mobile.android.5.6.social_reporting","compliance_cross_account_gallery_policy","compliance_mcuribl_alternate_unroller","support_ref_log","zendesk_chat_required_fields","delivery_dkim_lowercase_i_tag","pass_through_logger","adyen_turnoff","channels.neapolitan.drop_zone_event","channels.square.no_product_block_usage","channels.postcards_usabilla_survey","channels.google_analytics_v3","channels.twitter_verify_connection","channels.confetti","gdpr.require_fields","automations_social_post","automation_front_door_left_slat","met_mctx_open_click_tracking","ignore_egp_spam_trap","zendesk_customer_tier","zendesk_customer_tier_chat","no_user_chat","facebook_api_upgrade","pricing_email_form","mcadmin_okta","ads_fb_retargeting","validate_login_user_by_username","refactor_high_vol_send","save_last_api_activity","mandrill_signup_permitted","speed_up_ecomm_category_query","subscribe_post_throttler_logging","mcadmin_delete_store_button","save_customer_within_list_management","es_segment_test_count","partner_platform_api_utma","partner_platform_api_root_ping","shopify_marketing_event_outreach","shopify_marketing_event_ad","ecommerce_customer_calculations","pylp_ad_reporting","fb_ad_gifs","fb_pixel_creation","facebook.ads.publishing_enabled","retry_login_cacheclient","nd.circuit_breaker.wind_down","nd.shopsync.update_source","sites.tos_feature_pauses","eventbrite_affiliate_links","ecommerce_transactional_opt_in","enable_pfree_chat_support","gpaid.usabilla_survey_cookie","segmentation_feature_parity_batch2","paypal_slab_removal","ga_reports_fix","revenue.log_retier_opportunities","adyen_client_guzzle","dkim_options","revenue.retier_notification","revenue.net_new_free_on_whole_audience_count","gdpr.link_tracking","remove_login_flashblock","front_end_rum","add_tag_api_logging","billing_replace_deprecated","text_filter_html_removal","partner_exp.video","get_content_from_url_guzzle","mcmta_client_guzzle","security.quote_segment_conditions","security.login_cookie_test_removal","no_reply_billing","gpaid.post_import_banner_audience_size","mobile_content_selection","improve_landing_page_stats","gpaid.use_order_payment_service","gpaid.use_order_payment_service_for_dlocal","automations_lazily_load_settings_html","user_setting_dne","user_setting_exists","gact.usabilla_neopolitan","mc_hash_db_exists_templates","automation_optimize_ux_for_tags","crm_process_updates","template_styles_caching","template_replicate_gcs_improvement"] || {},
+
+            'policy': {"seat":{"max-instances":1,"category-restrictions":[{"name":"role","allowed-values":["owner"]}]},"template":{"category-restrictions":[{"name":"category","allowed-values":["basic_layouts","basic_themes"]}]},"audience":{"max-instances":1},"automation":{"category-restrictions":[{"name":"workflow","allowed-values":["abandonedBrowse","abandonedCart","categoryFollowup","custom","emailFollowup","productFollowup","purchaseFollowup","reengageSupporters","singleWelcome","sitePopupThankYou","tagAdd","groupAddSingle","groupRemoveSingle","topSupportersSingle","firstTimeCustomersSingle","bestCustomersSingle","reengageCustomersSingle","apiSingle","birthdaySingle","dateAddedSingle","recurringEventSingle","specialEventSingle","eventApi"]}]},"automation_step":{"max-instances":1},"campaign":{"category-restrictions":[{"name":"type","allowed-values":["regular","plaintext","rss","trans","auto","automation","reconfirm","tx"]}]}},
+
+            'userLevel': "free",
+
+            'isAnyEcomm': false,
+
+            'hasPaid': false,
+
+            'currencySymbol': "$",
+
+            'currencyCode': "USD",
+
+            'currencyLocale': "en-US",
+
+            'timezoneLabel': "Eastern Time",
+
+            'timezoneOffset': -4,
+
+            'hasVerifiedCustomDomain': false,
+
+            'isActivelyPaying': false,
+
+            'isActivelyPayingEachMonth': false,
+
+            'isBrandedBundleSubscriber': false,
+
+            'isCurrencySymbolBehindAmount': false,
+
+            'mustTrackLinks': true,
+
+            'isGoalAvailable': false,
+
+            'isGoalEnabled': false,
+
+            'canSend': true,
+
+            'freeLimit': 2000,
+
+            'whyNotSend': "There are some issues which might impact your ability to send.  <a class=\"nowrap\" href=\"https:\/\/us3.admin.mailchimp.com\/account#issues\">Learn more about your account status<\/a>.",
+
+            'whyNotSendTitle': "Sending Disabled",
+
+            'isPaused': false,
+
+            'sentToday': 0,
+
+            'isLimitedTrial': true,
+
+            'canSendFree': true,
+
+            'isPayAsYouGo': false,
+
+            'brandLogoUrl': "https:\/\/cdn-images.mailchimp.com\/template_images\/gallery\/logo@2x.png",
+
+            'isND': false,
+
+            'isBootstrapped': true,
+
+            'appVersion': "1.1.1b1efd4dd03870d17652c22eda60802c5fe212a52",
+
+            'dataExportsAllowed': true,
+
+            'websiteLogoUrl': "",
+
+            'canSeePaywall': true,
+
+        });
+        
+    });
+        require([
+        "vendor/bugsnag/bugsnag",
+        "mojo/user",
+    ], function (bugsnag, user) {
+        bugsnag.endpoint = "https:\/\/bugsnag-notify.mailchimp.com\/js";
+        bugsnag.apiKey = "29f7c1fcbc19f93274b6fae7d4ab0aa1";
+        bugsnag.autoNotify = true;
+        bugsnag.user = {
+            id: user.userId,
+            type: user.type,
+        };
+        bugsnag.appVersion = user.appVersion;
+        /*
+        [FP-157]: This field is for FP team to identify errors that
+        get triggered from webpack-built dojo bundles.
+        beforeNotify is a field that applies to the older version of
+        bugsnag that we currently use for dojo code. For newer version,
+        use `beforeSend`.
+        */
+        bugsnag.beforeNotify = function(payload) {
+            if (/js-legacy/.test(payload.stacktrace)) {
+                /* we currently have a device field in metaData
+                so we would not want to override it */
+                if (payload.metaData) {
+                    payload.metaData.bundle = 'webpack'
+                } else {
+                    payload.metaData = {
+                        bundle: 'webpack',
+                    };
+                }
+            }
+        };
+    });
+
+    require([
+        "dojo/Deferred",
+        "vendor/bugsnag/bugsnag",
+    ], function (Deferred, bugsnag) {
+        Deferred.instrumentRejected = function (error, handled, rejection, deferred) {
+            if (handled === true) {
+                return;
+            }
+
+            if (typeof error === "string") {
+                bugsnag.notify(error);
+            } else if (error instanceof Error) {
+                bugsnag.notifyException(error);
+            } else {
+                bugsnag.notify("UnhandledDeferredRejection", error);
+            }
+        };
+    });
+    </script><script type="text/javascript">
+    require(["mojo/rum"], function (rum) {
+        rum("hmac.8c20b43d602d8736d7901de042520c5c11359cb26d67e06b12068fcd9dcd109e.account-paywall-index")
+    });
+</script><script type="text/javascript">
+    require([
+        "mojo/widgets/Notifications",
+        "mojo/keep-alive"
+    ]);
+</script><script type="text/javascript">
+    dojo.require('dojo.parser');
+    dojo.require("dojo.NodeList-traverse");
+    dojo.require('dojo.cookie');
+    dojo.require('dijit.form.CheckBox');
+    dojo.require('dojo/dom');
+
+    dojo.addOnLoad(function() {
+        // Show password code that works for more than one password field in the page.
+        if(dojo.query('[name="show-password"]').length > 0) {
+            var input_password_arr = dojo.query('input[type="password"]');
+            dojo.forEach(dojo.query('[name="show-password"]'),function(el, i){
+                    el.index = i;
+                    dojo.connect(el, "click", function(evt){
+                        showPass(input_password_arr, evt);
+                    });//eo onclick evt;
+            });
+        }
+
+        //If more than one password field is in the page this function
+        // allows to keep the behaviors of the show password tick separate from one another
+        function showPass(input_password, ev){
+            var el = ev.target;
+            var showPassword = dojo.query('[data-mc-el="showPassword"]')[0];
+            dojo.forEach(input_password, function(pwdinput, i){
+                if(i===el.index) {
+                    if(el.checked){
+                        dojo.attr(pwdinput,"type","text");
+                        dojo.attr(pwdinput,"autocomplete","off");
+                        dojo.attr(pwdinput,"autocorrect","off");
+                        dojo.attr(pwdinput,"autocapitalize","off");
+                        dojo.attr(pwdinput,"spellcheck","false");
+                        pwdinput.focus();
+                        // show/hide password toggle on signup pg
+                        if(showPassword){
+                            showPassword.innerHTML = "Hide";
+                            dojo.addClass(showPassword, "c-showPassword--hideIcon");
+                            dojo.removeClass(showPassword, "c-showPassword--showIcon");
+                        }
+                    }
+                    else{
+                        dojo.attr(pwdinput,"type","password"); pwdinput.focus();
+                        // show/hide password toggle on signup pg
+                        if(showPassword){
+                            showPassword.innerHTML = "Show";
+                            dojo.addClass(showPassword, "c-showPassword--showIcon");
+                            dojo.removeClass(showPassword, "c-showPassword--hideIcon");
+                        }
+                    }
+                }
+            }); //eo forEach
+        }
+
+        
+        require(["dojo/cookie"], function(cookie){
+            if ( !cookie.isSupported() )  dojo.byId('no-cookies').style.display = '';
+            if(dojo.byId('account-form')){dojo.byId('no-cookies').style.display="none";}
+        });
+        
+        document.onkeypress=function(e){
+            var keycode = (e==null) ? keycode = event.keyCode : ((keycode = e.which));
+            var targetEl;
+            var shift_status = false;
+            if(dojo.isIE){
+                targetEl = event.srcElement;
+                shift_status = event.shiftKey;
+            }else{
+                if(e.target){
+                    targetEl = e.target;
+                }else if(e.srcElement){
+                    targetEl = e.srcElement;
+                }
+
+                if(e.shiftKey){
+                    shift_status = e.shiftKey;
+                }else if(e.modifiers){
+                    shift_status = !!(e.modifiers & 4);
+                }
+            }
+            if((keycode >= 65 && keycode <= 90 ) || (keycode >= 97 && keycode <= 122) && shift_status){
+                dojo.addClass(targetEl, 'caps');
+            }else{
+                dojo.removeClass(targetEl, 'caps');
+            }
+        }
+
+            });
+
+
+    /** Password Requirements **/
+    require([
+        "dojo/dom",
+        "dojo/query",
+        "dojo/dom-class",
+        "dojo/dom-attr",
+        "dojo/dom-style",
+        "dojo/on",
+        "dijit/registry",
+        "mojo/utils",
+        "dojo/ready"
+    ], function(dom, query, domClass, domAttr, domStyle, on, registry, utils, ready){
+
+        // At least one LOWERCASE character:
+        var lowerCasePattern = /^(?=.*[a-z]).+$/;
+
+        // At least one UPPERCASE character:
+        var upperCasePattern = /^(?=.*[A-Z]).+$/;
+
+        // At least one NUMBER:
+        var numberPattern = /^(?=.*[\d]).+$/;
+
+        // At least one SPECIAL character:
+        var specialCharacterPatter = /([-+=_!@#$%^&*.,;:'\"<>/?`~\[\]\(\)\{\}\\\|\s])/;
+
+        // At least 8 characters in the screen:
+        var characterCountPattern = /^.{8,}/;
+
+        // Flag to keep track if password is less than 50 characters:
+        var isLessThan50 = true;
+
+        ready(function(){
+
+            var pwd = dom.byId("new_password");
+            var passReq = query(".password-requirements")[0];
+
+            if(dom.byId("create-account")){
+                var createBtn = dom.byId("create-account");
+            }
+
+            if(dom.byId("join-account")){
+                var joinBtn = dom.byId("join-account");
+            }
+
+            if(registry.byId("reset-password")){
+                var resetBtn = registry.byId("reset-password");
+                resetBtn.setDisabled(true);
+            }
+
+            var lowercaseChar = query(".lowercase-char")[0];
+            var uppercaseChar = query(".uppercase-char")[0];
+            var numberChar = query(".number-char")[0];
+            var specialChar = query(".special-char")[0];
+            var _8Char = query(".8-char")[0];
+            var plus50 = query(".plus-50")[0];
+
+            // Attach event for signup form
+            if(dom.byId("signup-form")) {
+                checkRequirements();
+                on(dom.byId("signup-form"), "submit", function (e) {
+                    // Add loading animation to button
+                    utils.toggleButtonLoadingState(createBtn);
+                });
+            }
+
+            // Attach event for invite form
+            if(dom.byId("login-form")) {
+                on(dom.byId("login-form"), "submit", function (e) {
+                    // get button by submit
+                    var submitButton = e.target.querySelector("[type=\"submit\"]");
+                    // Add loading animation to button
+                    if (submitButton) {
+                        utils.toggleButtonLoadingState(submitButton);
+                    }
+                });
+            }
+
+            // Attach event for reset password form
+            if(dom.byId("reset-password-form")) {
+                on(dom.byId("reset-password-form"), "submit", function (e) {
+                    // Add loading animation to button
+                    utils.toggleButtonLoadingState(resetBtn);
+                });
+            }
+
+            // focus/focusout events for new password
+            if(passReq && !domClass.contains(passReq, "always-open")){
+                on(dom.byId("new_password"), "focus", function(){
+                    domClass.add(passReq, "open");
+                });
+
+                on(dom.byId("new_password"), "focusout", function(){
+                    domClass.remove(passReq, "open");
+                });
+            }
+
+           // Event for change of input (typing, pasting)
+            if(pwd){ on(pwd, "input", function(e) { checkRequirements(); }); }
+
+            function checkRequirements(){
+                toggleRequirements(pwd, lowerCasePattern, lowercaseChar);
+                toggleRequirements(pwd, upperCasePattern, uppercaseChar);
+                toggleRequirements(pwd, numberPattern, numberChar);
+                toggleRequirements(pwd, specialCharacterPatter, specialChar);
+                toggleRequirements(pwd, characterCountPattern, _8Char);
+
+                // Check if password is 50 chars or longer
+                if(pwd.value.length > 50){
+                    domStyle.set(plus50, "opacity", "1");
+                    isLessThan50 = false;
+                }else{
+                    domStyle.set(plus50, "opacity", "0");
+                    isLessThan50 = true;
+                }
+
+                if( lowerCasePattern.test(pwd.value) &&
+                        upperCasePattern.test(pwd.value) &&
+                        numberPattern.test(pwd.value) &&
+                        specialCharacterPatter.test(pwd.value) &&
+                        characterCountPattern.test(pwd.value) &&
+                        isLessThan50
+                        ){
+                    domClass.remove(query(".password-ok")[0], "hide");
+                    domClass.add(passReq, "hide");
+                    if(createBtn){ domAttr.remove(createBtn, "disabled"); }
+                    if(joinBtn){ domAttr.remove(joinBtn, "disabled"); }
+                    if(resetBtn){ resetBtn.setDisabled(false); }
+                }else{
+                    domClass.add(query(".password-ok")[0], "hide");
+                    if(createBtn){ domAttr.set(createBtn, "disabled", "disabled"); }
+                    if(joinBtn){ domAttr.set(joinBtn, "disabled", "disabled"); }
+                    if(resetBtn){ resetBtn.setDisabled(true); }
+                    domClass.remove(passReq, "hide");
+                }
+            }
+
+            function toggleRequirements(/*input*/pwd, /*RegEx*/regEx, /*element*/el){
+                if(regEx.test(pwd.value) ){
+                    domClass.add(el, "completed");
+                }else{
+                    domClass.remove(el, "completed");
+                }
+            }
+
+        });
+    });
+
+</script><script src="https://cdn.cookielaw.org/consent/aa5d1d12-198d-44fa-8bcc-f8ee6459cd15.js" type="text/javascript" charset="UTF-8"></script><script type="text/javascript">require(['mojo/views/account/paywall/index'], function(Module) {
+                    window._mc = new Module({"paywall_props":{"redirect":"\/signup\/new-user\/welcome\/?skip_pw=1","pricingPlanId":null,"pricingQuoteId":null,"featureName":null,"featureContext":null,"is_signup":true}});
+                    window._mc.run();
+                });</script></body> </html>

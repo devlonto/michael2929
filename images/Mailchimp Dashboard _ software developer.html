@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html> <head> <title>Mailchimp Dashboard | software developer</title>  <meta charset="utf-8"> <meta name="copyright" content="Copyright (c) 2019 Mailchimp. All Rights Reserved."> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover"> <meta name="apple-mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-status-bar-style" content="black">  <meta content="//mailchimp.com/browserconfig.xml" name="msapplication-config"> <meta content="#FFE01B" name="msapplication-TileColor">  <link href="https://cdn-images.mailchimp.com/favicons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"> <link href="https://cdn-images.mailchimp.com/favicons/touch-icon-192.png" rel="icon" sizes="192x192">  <link rel="shortcut icon" href="https://cdn-images.mailchimp.com/favicons/favicon.ico">  <link rel="mask-icon" href="https://cdn-images.mailchimp.com/favicons/mask-icon.svg" color="#241C15">  <link rel="stylesheet" type="text/css" href="/release/1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35/css/less/typefaces.css"> <link rel="stylesheet" type="text/css" href="/release/1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35/css/less/application.css">     
+
+          <script mc:noreorder>
+    window.gtmData = {
+        hasUser: true,
+        userId: 121668790,
+        loginId: "334e9d1cbe0039663d40e9de275c5a98",
+        UA: "UA-329148-81",
+        version: "1",
+        gaDimensions: [],
+        deferToGTM: false    };
+
+    (function /* gtmAPI */ () {
+
+        function buildCustomDimensions() {
+            var result = { 9: window.gtmData.version.toString() };
+            if(window.gtmData.hasUser) {
+                result[8] = window.gtmData.userId.toString();
+                result[24] = window.gtmData.loginId.toString();
+            }
+
+            var dims = window.gtmData.gaDimensions;
+            Object.keys(dims).forEach(function(dim) {
+                var index = parseInt(dim.replace('dimension', ''));
+                if(!isNaN(index)) {
+                    // sometimes things get into this array that are not numbered dimensions
+                    result[index] = dims[dim];
+                }
+            });
+            return result;
+        }
+
+        function gtmPayload(hitType, data) {
+            data = data || {};
+
+            data['_gtm_deferred'] = window.gtmData.deferToGTM;
+            data['type'] = hitType;
+            data['UA'] = window.gtmData.UA;
+            data['customDimensions'] = buildCustomDimensions();
+
+            data['customVariables'] = data['customVariables'] || {};
+            data['customVariables']['eventSource'] = 'gtm';
+            return data;
+        }
+
+        /**
+         * Records a GTM event, with custom variables. Accepts either:
+         *
+         *   gtmEvent('event category', { 'foo': 'bar' })
+         *
+         * or:
+         *
+         *   gtmEvent({
+         *     'eventCategory': 'event category',
+         *     'eventAction': 'event action',
+         *     'eventLabel': 'etc',
+         *     'eventValue': 1
+         *    }, { 'foo': 'bar' })
+         *
+         * For eventInfo guidelines see:
+         *   https://support.google.com/analytics/answer/1033068?hl=en
+         */
+        window.gtmEvent = function(eventInfo, customVariables) {
+            if(typeof eventInfo === 'string') {
+                eventInfo = { 'eventCategory': eventInfo };
+            }
+            customVariables = customVariables || {};
+
+            var event = gtmPayload('EVENT', {
+                'event': 'e_action',
+                'eventInfo': eventInfo,
+                'customVariables': customVariables
+            });
+
+            window.dataLayer.push(event);
+        };
+
+        window.dataLayer = [gtmPayload('PAGE')];
+    })();
+</script>  <script mc:noreorder>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MCZTKL');
+    // setup the GA command queue
+    window['GoogleAnalyticsObject'] = '_ga';
+    window._ga = window._ga || function() {
+        window._ga.q = window._ga.q || [];
+        window._ga.q.push(arguments);
+    };
+</script>
+
+
+ <script mc:noreorder>
+    function debuglog() {
+        if(typeof window._debug_analytics !== 'undefined' && window._debug_analytics) {
+            console.log.apply(console, arguments);
+        }
+    }
+
+    window.ga = function /*decoratedGoogleAnalytics*/() {
+        var args = [].slice.call(arguments, 0);
+        if (typeof args[0] === 'string'
+            && args[0] !== 'create'
+            && args[0] !== 'provide') {
+            args[0] = 't0.' + args[0];
+        }
+        debuglog('ga', args);
+        return _ga.apply(this, args);
+    };
+
+    (function /*initializeGoogleAnalytics*/() {
+        var gtmData = window.gtmData;
+
+        var dimensions = {
+            USER_ID: 'dimension8',
+            LOGIN_ID: 'dimension24',
+            TRACKING_VERSION: 'dimension9'
+        };
+
+        function trackGA() {
+            if (gtmData.hasUser) {
+                ga("create", gtmData.UA, "auto", {
+                    allowLinker: false,
+                    userId: gtmData.userId,
+                    name: 't0'
+                });
+
+                ga("set", dimensions.USER_ID, gtmData.userId.toString());
+                ga("set", dimensions.LOGIN_ID, gtmData.loginId.toString());
+            } else {
+                ga("create", gtmData.UA, "auto", {
+                    allowLinker: false,
+                    name: 't0'
+                });
+            }
+
+            ga("set", "transport", "beacon");
+
+            ga("set", dimensions.TRACKING_VERSION, gtmData.version);
+
+            ga("require","linker");
+            ga("linker:autoLink", [/(.*\.)?mailchimp(app)?\.com$/], !1,!0);
+
+            // Add logging in the console for interesting params
+            // see: https://developers.google.com/analytics/devguides/collection/analyticsjs/tasks
+            // TODO: Move logging into a UI (details TBD)
+            ga(function (tracker) {
+                var originalSendHitTask = tracker.get("sendHitTask");
+                tracker.set("sendHitTask", function(model) {
+                    originalSendHitTask(model);
+                    var payload = model.get("hitPayload");
+
+                    if ("URLSearchParams" in window) {
+                        var params = new URLSearchParams(payload.toString());
+
+                        var t = params.get('t');
+                        var ec = params.get('ec');
+                        var ea = params.get('ea');
+                        var el = params.get('el');
+
+                        console.group("%cEvent tracking", "color: #241C15; background-color: #FF3EBF; padding: 4px; font-weight: 400;");
+                        console.log("Hit type (t)\t\t", t);
+                        console.log("Event category (ec)\t", ec);
+                        console.log("Event action (ea)\t", ea);
+                        console.log("Event label (el)\t", el);
+                        console.groupEnd();
+
+                        /**
+                         * Dispatch custom track event to all subscribers/listeners
+                         * @see: web/js/src/shared/core/dev-tools/DevTools/DevToolsPanel/tabs/Analytics/index.js
+                         */
+                        window.dispatchEvent(
+                            new CustomEvent('mc:track', {
+                                detail: { t, ec, ea, el, date: Date.now() },
+                            }),
+                        );
+                    }
+                });
+            });
+
+            ga("send", "pageview", gtmData.gaDimensions);
+        }
+
+        if (typeof window.ga === 'function' && !gtmData.deferToGTM) {
+            trackGA();
+        }
+    })();
+
+    (function () {
+        function getCookie(check_name) {
+            var a_all_cookies = document.cookie.split(';');
+            var a_temp_cookie = '';
+            var cookie_name = '';
+            var cookie_value = '';
+            var b_cookie_found = false;
+
+            for (i = 0; i < a_all_cookies.length; i++) {
+                a_temp_cookie = a_all_cookies[i].split('=');
+                cookie_name = a_temp_cookie[0].replace(/^\s+|\s+$/g, '');
+                if (cookie_name === check_name) {
+                    b_cookie_found = true;
+                    if (a_temp_cookie.length > 1) {
+                        cookie_value = unescape(a_temp_cookie[1].replace(/^\s+|\s+$/g, ''));
+                    }
+                    return cookie_value;
+                }
+                a_temp_cookie = null;
+                cookie_name = '';
+            }
+
+            if (!b_cookie_found) {
+                return null;
+            }
+        }
+        // Save tracking id and client id to a cookie so we can use them server side
+        setTimeout(function () {
+            if (typeof window.ga === 'function' && !getCookie('_mcga')) {
+                ga(function (tracker) {
+                    var gaData = {
+                        tid: tracker.get('trackingId'),
+                        cid: tracker.get('clientId')
+                    };
+                    document.cookie = '_mcga=' + JSON.stringify(gaData) + ';path=/;domain=.mailchimp.com';
+                });
+            }
+        }, 1);
+    })();
+</script>         <style type="text/css">
+    iframe[name=google_conversion_frame] { display: none; }
+</style>     <div style="display: none; visibility: hidden;">  </div>   </head> <body class="mcd   relative full-height-vh flex flex-col overflow-hidden">  <noscript> <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MCZTKL" height="0" width="0" style="display:none;visibility:hidden"> </iframe> </noscript>                  <div class="novip">  <div data-dojo-type="mojo/widgets/MainNavigation" class="main-navigation selfclear" aria-hidden="false" role="navigation" tabindex="0">   <div class="line selfclear">  <nav class="navigation-left float-left"> <ul class="linear-list selfclear">  <li class="nav-link show-mobile"> <button type="button" aria-label="Open navigation" data-dojo-attach-point="hamburger" mc:track-action="Hamburger" class="menu-button no-delay navigationItem c-navigationItem_button alignc padding--lv3 !padding-top-bottom--lv0" onclick="ga('send', 'event', 'Global Navigation', 'Hamburger', 'icon');"><span class="freddicon hamburger"></span></button> </li>  <li class="nav-link branding"> <a mc:track-action="Home" href="/" aria-label="Main dashboard" class="no-delay navigationItem alignc padding--lv3 !padding-top-bottom--lv0" id="freddielink" onclick="ga('send', 'event', 'Global Navigation', 'Home', '/');"> <img src="/release/1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35/images/brand_assets/logos/mc-freddie-dark.svg" width="38" height="38" alt="Mailchimp logo" role="presentation"> </a> </li>
+
+                                                                            <li class="nav-link hide-mobile flex align-items--baseline"> <a href="/campaigns" data-dojo-type="" aria-label="Campaigns" title="Design and send campaigns" class="  navigationItem text-align--center padding--lv3 !padding-top-bottom--lv0" onclick="ga('send', 'event', 'Global Navigation', 'Clicked link-getLabel', 'link-getUri');">
+                                Campaigns                            </a>  </li>
+                                                                                                <li class="nav-link hide-mobile flex align-items--baseline"> <a href="/templates" data-dojo-type="" aria-label="Templates" title="Our pre-designed templates help you quickly create and build emails that are tailored to fit your brand." class="  navigationItem text-align--center padding--lv3 !padding-top-bottom--lv0" onclick="ga('send', 'event', 'Global Navigation', 'Clicked link-getLabel', 'link-getUri');">
+                                Templates                            </a>  </li>
+                                                                                                <li class="nav-link hide-mobile flex align-items--baseline"> <a href="/audience" data-dojo-type="" aria-label="Audience" title="View the members of your audience" class="  navigationItem text-align--center padding--lv3 !padding-top-bottom--lv0" onclick="ga('send', 'event', 'Global Navigation', 'Clicked link-getLabel', 'link-getUri');">
+                                Audience                            </a>  </li>
+                                                                                                <li class="nav-link hide-mobile flex align-items--baseline"> <a href="/reports" data-dojo-type="" aria-label="Reports" title="Track the outcome of your campaigns" class="  navigationItem text-align--center padding--lv3 !padding-top-bottom--lv0" onclick="ga('send', 'event', 'Global Navigation', 'Clicked link-getLabel', 'link-getUri');">
+                                Reports                            </a>  </li>
+                                                                                                <li class="nav-link hide-mobile flex align-items--baseline"> <a href="/content" data-dojo-type="" aria-label="Content Studio" title="Upload images, documents, and other files to the Content Studio and share them across all of your marketing channels." class="  navigationItem text-align--center padding--lv3 !padding-top-bottom--lv0" onclick="ga('send', 'event', 'Global Navigation', 'Clicked link-getLabel', 'link-getUri');">
+                                Content Studio                            </a>  </li>
+                                    
+                   </ul> </nav>  <nav class="float-right flex">    
+                        <div class="flex hide-mobile"> <div data-dojo-type="mojo/widgets/campaigns/CreateButton" data-dojo-props="buttonLocation: 'navigation', buttonLabel: 'Create', buttonClass: 'p1 align-self--center' "></div> </div>            
+            <ul class="linear-list selfclear">  <li class="nav-link full-height"> <a mc:track-action="Clicked Account" data-dojo-attach-point="accountButton" href="#" class="account-button no-delay navigationItem alignc padding--lv3 !padding-top-bottom--lv0 hide-phone" onclick="ga('send', 'event', 'Global Navigation', 'Clicked Account', '(not set)');"> <div role="presentation" class="logged-in-avatar inline-block avatar !margin--lv0" style="background-image: url(https://secure.gravatar.com/avatar/494b54891eb4ef11b8b664f451b4a5f2.jpg?s=300&amp;d=https%3A%2F%2Fcdn-images.mailchimp.com%2Ficons%2Fletter-avatars%2Fm.png)">  </div> <div aria-label="Signed in as michael - click to toggle account menu" class="account-name inline-block hide-mobile valign-middle alignl margin--lv2 !margin-top-bottom--lv0 !margin-right--lv0"> <span aria-label="Signed in as michael">michael</span><br> <span class="fwn" aria-label="Account name">software developer</span> </div> <span class="inline-block freddicon menu-down margin--lv1 !margin-top-bottom--lv0 !margin-right--lv0"></span> </a> </li>  <li class="nav-link full-height"><a mc:track-action="Clicked Help" data-dojo-attach-point="helpButton" title="Get help by referring to the knowledge base articles, answers and glossary" aria-label="Get help by referring to the knowledge base articles, answers and glossary" href="#" class="nav-help-button no-delay navigationItem text-align--center padding--lv3 !padding-top-bottom--lv0" onclick="ga('send', 'event', 'Global Navigation', 'Clicked Help', '(not set)');">Help</a></li>  <li class="nav-link full-height"><a mc:track-action="Clicked Search" data-dojo-attach-point="searchButton" aria-label="Global search" href="#" class="nav-search-button no-delay navigationItem text-align--center padding--lv3 !padding-top-bottom--lv0" onclick="ga('send', 'event', 'Global Navigation', 'Clicked Search', 'icon');"><span class="freddicon search !margin--lv0"></span></a></li> </ul> </nav> </div> </div>    <div data-dojo-type="mojo/widgets/PhoneNavigation" aria-hidden="true" class="phone-overlay-container c-baseOverlay selfclear" role="navigation">  <div data-dojo-attach-point="closeButton" title="Close menu" class="close-overlay close-left freddicon cross absolute cursor-pointer"></div>  <div class="line selfclear"> <nav class="mobile-nav lastGroup size1of1 overflow-visible selfclear"> <ul mc:track="phone navigation" class="primary-links selfclear">
+                                                            <li> <a href="/campaigns" aria-label="Campaigns" title="Design and send campaigns" class=" phone-menu-link relative padding--lv3">
+                                Campaigns                            </a> </li>
+                                                                                <li> <a href="/templates" aria-label="Templates" title="Our pre-designed templates help you quickly create and build emails that are tailored to fit your brand." class=" phone-menu-link relative padding--lv3">
+                                Templates                            </a> </li>
+                                                                                <li> <a href="/audience" aria-label="Audience" title="View the members of your audience" class=" phone-menu-link relative padding--lv3">
+                                Audience                            </a> </li>
+                                                                                <li> <a href="/reports" aria-label="Reports" title="Track the outcome of your campaigns" class=" phone-menu-link relative padding--lv3">
+                                Reports                            </a> </li>
+                                                                                <li> <a href="/content" aria-label="Content Studio" title="Upload images, documents, and other files to the Content Studio and share them across all of your marketing channels." class=" phone-menu-link relative padding--lv3">
+                                Content Studio                            </a> </li>
+                                                    <li><hr class="margin--lv4 !margin-left-right--lv0 !margin-bottom--lv0"></li>  <li class="padding--lv3 !padding-left--lv0"> <div class="media lastGroup size1of1 overflow-visible selfclear"> <div role="presentation" class="media-image margin--lv3 !margin-top-bottom--lv0"> <div role="presentation" class="c-mobileNavigationAvatar padding--lv4" style="background-image: url(https://secure.gravatar.com/avatar/494b54891eb4ef11b8b664f451b4a5f2.jpg?s=300&amp;d=https%3A%2F%2Fcdn-images.mailchimp.com%2Ficons%2Fletter-avatars%2Fm.png); background-size: contain;"></div> </div> <div class="media-body"> <p class="fwb !margin--lv0">software developer</p> <p class="!margin--lv0" aria-label="Signed in as michael">michael <span class="badge success capitalize inline-block valign-middle">owner</span></p> </div> </div> </li> </ul> </nav>  <div class="phone-account-menu sliding-card--mask sliding-card--phone-mask selfclear"> <div class="sliding-card--container sliding-card--phone-container relative"> <nav class="sliding-card sliding-card--phone selfclear" role="navigation"> <ul mc:track="phone navigation" class="selfclear">   <li> <a data-dojo-attach-point="slideNotifications" id="phone-notifications-link" mc:track-label="phone-menu notifications" class="phone-menu-link relative padding--lv3" href="#"> Notifications<span class="float-right freddicon menu-right-on-right"></span> <span class="badge notification float-right account-menu_notificationBadge" data-mc-notification-count style="display:none;">0</span> </a> </li>    <li><a mc:track-label="phone-menu profile" class="phone-menu-link relative padding--lv3" href="/account/profile/">Profile</a></li>  <li><a mc:track-label="phone-menu connected-sites" class="phone-menu-link relative padding--lv3" href="/account/connected-sites/">Connected Sites</a></li>  <li> <a mc:track-label="phone-menu account-settings" href="/account/" class="phone-menu-link relative padding--lv3"> Account  </a> </li>  <li><a mc:track-label="phone-menu logout" class="phone-menu-link relative padding--lv3" href="/login/out/">Log Out</a></li> </ul> </nav><p class="c-legalNotice margin-bottom--lv0 padding--lv3 padding-bottom--lv2 padding-top--lv2"> <a class="textcolor--secondary" href="http://mailchimp.com/legal/privacy" target="_blank" rel="noopener noreferrer">Privacy</a> and <a class="textcolor--secondary" href="http://mailchimp.com/legal/" target="_blank" rel="noopener noreferrer">Terms</a> </p>   <div data-dojo-attach-point="notificationsCard" class="sliding-card sliding-card--phone sliding-card--phone-notifications absolute" data-dojo-type="mojo/widgets/Notifications"> <ul class="selfclear"> <li class="sliding-card--sticky padding--lv3 alignc fwb flex flex-between"> <a href="#" data-dojo-attach-point="slideBackNotifications" class="sliding-card--back fwn"><span class="freddicon menu-left-on-left"></span>Back</a> <span>Notifications</span> <a data-dojo-attach-point="dismissAllNotifications" href="javascript:;" class="sliding-card--back fwn">Dismiss All</a> </li>  <li class="padding--lv3" data-dojo-attach-point="noDataDom" style="display:block;"> <div class="no-notifications alignc"> <div class="c-noDataBlock_icon margin-bottom--lv1" style="background-image: url(/images/brand_assets/illos/art-empty-notifications.png)"></div> <p>No notifications right now.</p> </div> </li>  <li style="display:none;"> <ul class="notification-list--app">     </ul> </li> </ul> </div>  <div data-dojo-attach-point="accountCard" class="sliding-card sliding-card--phone sliding-card--phone-accounts absolute"> <ul class="phone-account-list" role="navigation"> <li class="sliding-card--sticky padding--lv3 alignc fwb"><a href="#" data-dojo-attach-point="slideBackAccount" class="sliding-card--back absolute fwn"><span class="freddicon menu-left-on-left"></span>Back</a>Switch Account</li>   <li class="acl-account" data-account-name="software developer" title="Signed in as software developer"> <a href="#" class="account-link nolink padding--lv3 border-bottom">software developer <span role="presentation" class="freddicon tick float-right"></span> </a>  </li> </ul> </div> </div> </div> </div> </div>   <div data-dojo-type="mojo/widgets/TabletNavigation" aria-hidden="true" class="tablet-overlay-container c-baseOverlay selfclear hide-phone" role="navigation">  <button type="button" id="close-tablet-nav" aria-label="Close navigation" data-dojo-attach-point="closeButton" title="Close menu" class="close-overlay close-left c-overlayCloseButton absolute cursor-pointer"><span class="freddicon cross"></span></button>  <div class="line selfclear"> <nav class="mobile-nav lastGroup size1of3 centered selfclear"> <ul mc:track="tablet navigation" class="alignc selfclear">
+                                                            <li> <a href="/campaigns" aria-label="Campaigns" title="Design and send campaigns" class=" tablet-menu-link inline-block relative padding--lv5">
+                                Campaigns                            </a> </li>
+                                                                                <li> <a href="/templates" aria-label="Templates" title="Our pre-designed templates help you quickly create and build emails that are tailored to fit your brand." class=" tablet-menu-link inline-block relative padding--lv5">
+                                Templates                            </a> </li>
+                                                                                <li> <a href="/audience" aria-label="Audience" title="View the members of your audience" class=" tablet-menu-link inline-block relative padding--lv5">
+                                Audience                            </a> </li>
+                                                                                <li> <a href="/reports" aria-label="Reports" title="Track the outcome of your campaigns" class=" tablet-menu-link inline-block relative padding--lv5">
+                                Reports                            </a> </li>
+                                                                                <li> <a href="/content" aria-label="Content Studio" title="Upload images, documents, and other files to the Content Studio and share them across all of your marketing channels." class=" tablet-menu-link inline-block relative padding--lv5">
+                                Content Studio                            </a> </li>
+                                                </ul> </nav> </div> </div>     <div data-dojo-type="mojo/widgets/AccountMenu" class="account-menu sliding-card--mask border-radius--lv2 border-gray selfclear fixed hide-phone" aria-hidden="true"> <div class="sliding-card--container relative">  <nav class="sliding-card bg-white selfclear" role="navigation"> <ul class="small-meta">   <li class="border-bottom"> <a data-dojo-attach-point="slideNotifications" mc:track href="javascript:;" id="notifications-link" class="account-link nolink padding--lv3">Notifications <span class="freddicon menu-right-on-right float-right" role="presentation"></span> <span class="badge notification float-right account-menu_notificationBadge" data-mc-notification-count style="display:none;">0</span> </a> </li>    <li class="border-bottom"><a mc:track href="/account/profile/" class="account-link nolink padding--lv3">Profile</a></li>  <li class="border-bottom"> <a mc:track href="/account/connected-sites/" class="account-link nolink padding--lv3" data-dojo-attach-point="connectedSitesNode">  <span data-dojo-type="mojo/widgets/ConnectedSitesNavItem" data-dojo-props="storeSyncChannelName: 'private-bf061819f620122111c2a078cd0638956e93175b-connected-sites-sync-status'"></span> </a> </li>    <li class="border-bottom"> <a mc:track href="/account/" class="account-link nolink padding--lv3 display--flex justify-content--space-between align-items--baseline"> Account  </a> </li>     <li><a mc:track href="/login/out/" class="account-link nolink padding--lv3">Log Out</a></li> </ul> </nav><p class="border-top c-legalNotice margin-bottom--lv0 padding--lv3 padding-bottom--lv2 padding-top--lv2 bg-white"> <a class="textcolor--secondary" href="http://mailchimp.com/legal/privacy" target="_blank" rel="noopener noreferrer">Privacy</a> and <a class="textcolor--secondary" href="http://mailchimp.com/legal/" target="_blank" rel="noopener noreferrer">Terms</a> </p>   <div data-dojo-attach-point="notificationsCard" class="sliding-card bg-white sliding-card--notifications absolute" data-dojo-type="mojo/widgets/Notifications"> <div class="small-meta sliding-card--sticky padding-top--lv2 padding-bottom--lv2 padding-left--lv3 padding-right--lv3 font-weight--bold alignc flex flex-between"> <a data-dojo-attach-point="slideBackNotifications" href="javascript:;" class="sliding-card--back fwn"><span class="freddicon menu-left-on-left"></span>Back</a> <span class="padding-left--lv1 inline-block">Notifications</span> <a data-dojo-attach-point="dismissAllNotifications" href="javascript:;" class="sliding-card--back fwn">Dismiss All</a> </div> <ul class="small-meta relative notification-list overflow-y--auto">  <li class="padding--lv2 !padding-top-bottom--lv0" data-dojo-attach-point="noDataDom" style="display:block;"> <div class="no-notifications alignc"> <div class="c-noDataBlock_icon c-noDataBlock_icon--compact margin-bottom--lv1" style="background-image: url(/images/brand_assets/illos/art-empty-notifications.png)"></div> <p>No notifications right now.</p> </div> </li>  <li class="padding--lv3 !padding-top-bottom--lv0" style="display:none;"> <ul class="notification-list--app overflow-y--auto overflow-x--hidden">     </ul> </li> </ul> </div>  <div data-dojo-attach-point="accountCard" class="sliding-card bg-white sliding-card--accounts absolute"> <ul class="account-list small-meta" role="navigation"> <li class="sliding-card--sticky padding--lv3 font-weight--bold alignc"><a data-dojo-attach-point="slideBackAccount" href="javascript:;" class="sliding-card--back absolute fwn"><span class="freddicon menu-left-on-left"></span>Back</a>Switch Account</li>   <li class="acl-account" data-account-name="software developer" title="Signed in as software developer"> <a href="#" class="account-link nolink padding--lv3 border-bottom">software developer <span role="presentation" class="freddicon tick float-right"></span> </a>  </li> </ul> </div> </div> </div>   <div data-dojo-type="mojo/widgets/GlobalSearch" role="search" aria-hidden="true" class="search-overlay-container c-baseOverlay selfclear">  <div data-dojo-attach-point="closeButton" title="Close menu" class="close-overlay close-right freddicon cross absolute cursor-pointer"></div> <div class="global-search mc-small-content">   <form data-dojo-attach-point="globalSearchForm" id="main-search" class="!margin-bottom--lv8" method="get" url="/search" novalidate="novalidate"> <h2 class="alignc !margin-bottom--lv4 fwb">Search Campaigns and Contacts</h2>  <div class="big-search-container relative !margin-bottom--lv3">   <select id="search-filter" data-dojo-type="dijit/form/Select" maxheight="-1" name="entities" class="big-search-filter small-select"> <option value="all" selected="selected">Everything</option> <option value="campaigns">Campaigns</option> <option value="listmembers">Contacts</option>  </select>  <input data-dojo-attach-point="globalSearchField" data-dojo-props="intermediateChanges:true" id="global-search" name="global-search" class="big-search-field !margin--lv0 full-width av-search" type="search" tabindex="0" autofocus="autofocus" placeholder="Search everything">  <span class="big-search-controls"> <span data-dojo-attach-point="clearIcon" class="freddicon cross clear-search hide cursor-pointer absolute"></span> <button data-dojo-attach-point="searchIcon" type="submit" class="icon-search button freddicon solidsearch !margin--lv0"></button> </span>  <div data-dojo-attach-point="loadIcon" class="loading-search hide padding--lv5 absolute"></div> </div> <div class="line !margin-bottom--lv3"> <div class="lastUnit size1of1 alignc small-meta"> <a href="javascript:;" id="search-tips" title="Search Tips" onclick="mojo.utils.toggleEl(this, 'hotkey-help-search-pane', 'Advanced search keywords', 'Close advanced search keywords'); return false;">Advanced search keywords</a> </div> </div>  <div id="hotkey-help-search-pane" class="hotkey-help-search-pane !margin-bottom--lv5 bg-white border-gray border-radius--lv1 padding--lv4 relative" style="display:none;"> <div data-dojo-attach-point="keywords" class="line main-section"> <div class="sub-section"> <p class="alignc full-width">Use the keywords below to help find what you’re looking for.</p> <p class="alignc full-width">Type <code class="badge success">keyword</code> followed by <code class="badge">:</code> and <code class="badge warning">your query</code></p> <p class="alignc full-width">For example, <code>subject:holidays</code> or <code>email:google.com</code>.</p> </div> <div class="line sub-section"> <div class="group size1of2"> <h4>Campaigns</h4> <ul class="dotted-list list-squished"> <li class="code searchkeyword"><a href="javascript:;">fromname:</a></li> <li class="code searchkeyword"><a href="javascript:;">subject:</a></li> <li class="code searchkeyword"><a href="javascript:;">name:</a></li> <li class="code searchkeyword"><a href="javascript:;">type:regular</a></li> <li class="code searchkeyword"><a href="javascript:;">type:automation</a></li> <li class="code searchkeyword"><a href="javascript:;">type:rss</a></li> <li class="code searchkeyword"><a href="javascript:;">type:ad</a></li> <li class="code searchkeyword"><a href="javascript:;">email_status:draft</a></li> <li class="code searchkeyword"><a href="javascript:;">email_status:sent</a></li> <li class="code searchkeyword"><a href="javascript:;">email_status:sending</a></li> <li class="code searchkeyword"><a href="javascript:;">ad_status:draft</a></li> <li class="code searchkeyword"><a href="javascript:;">ad_status:completed</a></li> <li class="code searchkeyword"><a href="javascript:;">ad_status:active</a></li> </ul> </div> <div class="lastGroup size1of2"> <h4>Lists</h4> <ul class="dotted-list list-squished !margin--lv0"> <li class="code searchkeyword"><a href="javascript:;">email:</a></li> <li class="code searchkeyword"><a href="javascript:;">merge1:</a></li> <li class="code searchkeyword"><a href="javascript:;">merge2:</a></li> </ul> </div> </div> </div> </div> <input type="hidden" name="__csrf_token" id="" value="67c90cbe6145b4fcfc897eccb9f9cffdac3de8f3" class="av-hidden"></form>  <div data-dojo-attach-point="searchError" class="line section hide search-error"> <div class="feedback-block error"> <div class="lastUnit size1of1"> <div class="media"> <div class="media-image"> <span class="freddicon not-allowed"></span> </div> <div class="media-body"> <h4>Something went wrong.</h4> <p>There was an error processing the request.</p> </div> </div> </div> </div> </div>  <div data-dojo-attach-point="searchCount" id="search-count" class="lastUnit size1of1 !padding--lv0 hide !margin-bottom--lv1"> <p class="!margin--lv0 full-width"> <span data-dojo-attach-point="totalCount" class="result-count-total fwb">0</span> </p> </div>  <div data-dojo-attach-point="searchResults" id="search-results-data"> <div class="results"></div> </div> </div> </div>   <div data-dojo-type="mojo/widgets/KbSearch" class="kb-overlay-container c-baseOverlay selfclear" role="search" aria-hidden="true">  <div title="Close menu" data-dojo-attach-point="closeButton" class="close-overlay close-right freddicon cross absolute cursor-pointer"></div> <div> <div data-dojo-attach-point="searchPanel" class="global-search mc-small-content"> <div data-dojo-attach-point="topUpgrade" style="display:none;">  <div class="support-upgrade-container"> <img class="support-upgrade-container__image" src="/release/1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35/images/experiments/support-based-upgrade/support_illustration.png"> <div class="support-upgrade-container__content"> <h4 class="support-upgrade-container__heading">Need help now?</h4> <p>Talk to our support team when you upgrade to one of our new paid plans.</p> <div class="button-group"> <a class="button p1" href="javascript:" data-dojo-attach-point="topUpgradeButton" role="button">Upgrade</a> <a href="javascript:" data-dojo-attach-point="dismissTopUpgrade">No thanks</a> </div> </div> </div>  </div> <form data-dojo-attach-point="searchForm" class="kb-search !margin-bottom--lv8" method="get" novalidate="novalidate"> <h2 class="alignc !margin-bottom--lv4 fwb">Search the Knowledge Base</h2>  <div class="big-search-container relative !margin-bottom--lv3">  <input data-dojo-attach-point="searchInput" name="kb-search" class="big-search-field !margin--lv0 full-width av-search" type="search" tabindex="0" autofocus="autofocus" placeholder="Search articles" id="kb-search">  <span class="big-search-controls"> <span data-dojo-attach-point="clearIcon" class="freddicon cross clear-search hide cursor-pointer absolute"></span> <button data-dojo-attach-point="searchIcon" type="submit" class="button freddicon solidsearch !margin--lv0"></button> </span>  <div class="loading-search hide padding--lv5 absolute" data-dojo-attach-point="searchLoader"></div> </div> <input type="hidden" name="__csrf_token" id="" value="67c90cbe6145b4fcfc897eccb9f9cffdac3de8f3" class="av-hidden"></form>   <div class="line section hide search-error"> <div class="feedback-block error"> <div class="lastUnit size1of1"> <div class="media"> <div class="media-image"> <span class="freddicon not-allowed"></span> </div> <div class="media-body"> <h4>Something went wrong.</h4> <p>There was an error processing the request.</p> </div> </div> </div> </div> </div>  <div id="kb-recommended" class="kb-recommended line main-section" data-dojo-attach-point="recommendedContainer"> <div class="lastGroup size1of1"> <h3>Recommended Articles</h3> <div data-dojo-attach-point="inlineUpgrade" style="display:none;"> <ul class="recommended-articles"> <li class="padding--lv3 !padding-left-right--lv0 border-bottom"> <h4 class="kb-heading !margin--lv0"> <a href="javascript:" data-dojo-attach-point="inlineUpgradeButton"> Need help now? <span class="badge info">Upgrade</span> </a> </h4> <p class="kb-content !margin--lv0"> Talk to our support team when you upgrade to one of our new paid plans. </p> </li> </ul>  </div> <ul class="recommended-articles" data-dojo-attach-point="recommendedArticlesContainer"> </ul> </div> </div>  <div id="kb-results" class="line main-section" data-dojo-attach-point="resultsContainer"> <div class="lastGroup size1of1 section">  <div class="line" data-dojo-attach-point="resultsList"></div> </div> </div> </div> <div data-dojo-attach-point="contentPanel" class="global-search mc-small-content"> <a class="p !margin-bottom--lv6" href="#" data-dojo-attach-point="backLink"> <span class="freddicon menu-left-on-left" role="presentation" aria-hidden="true"></span>Back to Search </a> <div data-dojo-attach-point="contentContainer"></div> </div> </div> </div>        </div>  <div id="slot-campaignChecklistStatusBar"></div> <div id="slot-supportKnobWindow"></div>  <div id="wrap" class="wrap flex flex-direction--column overflow-auto-y overflow-hidden-x v-clearSafeAreaInset">  <div id="slot-preMainContent"></div>  <div id="main-content" class="main-content mc-content flex flex-col selfclear">  <div class="lastUnit size1of1 overflow-visible flex-shrink-none"> <div id="av-flash-block" class="c-flashBlock">     </div> </div>    <div role="main" id="content" class="content selfclear relative"> <div class="c-onboardingDashboard_padding"> <div data-mc-el="onboardingHeader"></div> <div data-mc-el="onboardingChecklist"></div> </div> </div>  <div>  </div> </div> </div>       <div data-dojo-type="dojox/widget/Toaster" id="toast" messagetopic="show-toast" positiondirection="tl-down" duration="2000" separator="&lt;br/&gt;" style="display:none;"></div> <div id="popup-win-blocked" data-dojo-type="dijit/Dialog" title="Pop-up Windows Are Blocked" execute="this.hide();" style="display: none;"> <div class="dijitDialogPaneContentArea"> <p>Looks like your browser is blocking pop-up windows.<br>Learn how to <a href="https://mailchimp.com/help/enable-pop-ups-in-your-browser/" class="info" target="_blank" rel="noopener noreferrer">enable them</a>.</p> </div> <div class="dijitDialogPaneActionBar"> <a href="#" class="button p0" onclick="dijit.byId('popup-win-blocked').hide(); return false;" role="button">Close</a> </div> </div>  <script type="text/javascript">
+    var xhr_open = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
+        xhr_open.call(this, method, url, async, user, password);
+        if (url.match(/^\/(?!\/)+/)) {
+            this.setRequestHeader('X-CSRF-Token', '67c90cbe6145b4fcfc897eccb9f9cffdac3de8f3');
+        }
+    }
+</script><script src="/release/1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35/js/dojo/dojo.js" data-dojo-config="parseOnLoad: true, usePlainJson: true, isDebug: false"></script><script src="/release/1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35/js/dojo/mccommon.js"></script><script type="text/javascript">
+    // The following dojo require places mojo.utils on the window.
+    // Many html files and javascript views rely on this property existing.
+    // Search for "mojo.utils" in any *.html files, and you'll find the hundreds of cases.
+    // Leaving this for historical reasons, but eventually migrating those usages would be good.
+    dojo.require("mojo.utils");
+
+    require(["mojo/widgets/Dialog"]);
+
+    // Leaving it globally since we used it around
+    window.rootUrl = '/';
+
+    require([
+        "dojo/query",
+    ], function (query) {
+        // captcha takes a global function to callback
+        window.captchaSuccess = function () {
+            query('[data-mc-el="captchaAutoSubmit"]')[0].submit();
+        };
+    });
+
+    require([
+        "dojo/_base/lang",
+        "mojo/user",
+        "mojo/context",
+    ], function (lang, user, context) {
+        // Add defaults to the actual modules.
+
+        lang.mixin(context, {
+            'rootUrl': '/',
+
+            'proxyBaseUrl': "https:\/\/d2q0qd5iz04n9u.cloudfront.net\/_ssl\/proxy.php",
+
+            'listManageDomain': "gmail.us3.list-manage.com",
+
+            'pusherKey': "74d7188a67461f12439a",
+
+            'cdnImagesDomain': "cdn-images.mailchimp.com",
+
+            'galleryDomain': "gallery.mailchimp.com",
+
+            'avestaEnvironment': "prod",
+
+            "imageEditorUrl": "https:\/\/dme0ih8comzn4.cloudfront.net\/imaging\/v3\/editor.js",
+
+            "imageEditorKey": "0e6dcf36c54b4faf965e45884a3dcf30",
+
+            "solvvyUrl": "\/js\/vendor\/solvvy\/solvvy_v3.js",
+
+            "enabledFlags": ["mobile.android.5.7.subscribers_new_pager","mobile.android.5.6.add_contact","mobile.iphone.5.6.explore_phase_2","mobile.android.5.6.explore_phase_2","mobile.iphone.5.5.explore_tab","mobile.android.5.5.explore_tab","mobile.android.5.5.report_detail_ecomm_fragment_mvvm","mobile.android.5.5.notification_settings_mvvm","mobile.iphone.5.5.one_list_onboarding","mobile.android.5.5.one_list_onboarding","mobile.iphone.5.5.audience_settings_update","mobile.android.5.5.audience_settings_update","mobile.iphone.5.5.audience_tab_update","mobile.android.5.5.refresh_audience_tab","mobile.android.5.5.audience_tab_update","mobile.iphone.5.6.social_reporting","mobile.android.5.6.social_reporting","compliance_cross_account_gallery_policy","compliance_mcuribl_alternate_unroller","compliance_list_form_template_force_default_flag","zendesk_chat_required_fields","delivery_dkim_lowercase_i_tag","adyen_turnoff","channels.square.no_product_block_usage","channels.postcards_usabilla_survey","channels.google_analytics_v3","channels.twitter_verify_connection","channels.confetti","gdpr.require_fields","automations_social_post","automation_front_door_left_slat","met_mctx_open_click_tracking","ignore_egp_spam_trap","zendesk_customer_tier","zendesk_customer_tier_chat","no_user_chat","facebook_api_upgrade","mcadmin_okta","ads_fb_retargeting","refactor_high_vol_send","save_last_api_activity","mandrill_signup_permitted","speed_up_ecomm_category_query","subscribe_post_throttler_logging","mcadmin_delete_store_button","save_customer_within_list_management","partner_platform_api_utma","partner_platform_api_root_ping","shopify_marketing_event_outreach","shopify_marketing_event_ad","ecommerce_customer_calculations","pylp_ad_reporting","fb_ad_gifs","fb_pixel_creation","facebook.ads.publishing_enabled","retry_login_cacheclient","nd.circuit_breaker.wind_down","nd.shopsync.update_source","sites.tos_feature_pauses","eventbrite_affiliate_links","ecommerce_transactional_opt_in","enable_pfree_chat_support","gpaid.usabilla_survey_cookie","segmentation_feature_parity_batch2","segmentation_consumers_read_committed","paypal_slab_removal","ga_reports_fix","revenue.log_retier_opportunities","adyen_client_guzzle","dkim_options","revenue.retier_notification","revenue.net_new_free_on_whole_audience_count","gdpr.link_tracking","remove_login_flashblock","front_end_rum","add_tag_api_logging","billing_replace_deprecated","text_filter_html_removal","partner_exp.video","get_content_from_url_guzzle","mcmta_client_guzzle","security.login_cookie_test_removal","no_reply_billing","gpaid.post_import_banner_audience_size","mobile_content_selection","improve_landing_page_stats","gpaid.use_order_payment_service","gpaid.use_order_payment_service_for_dlocal","automations_lazily_load_settings_html","user_setting_dne","user_setting_exists","gact.usabilla_neopolitan","mc_hash_db_exists_templates","automation_optimize_ux_for_tags","crm_process_updates","template_styles_caching","am.understand.audience_dashboard_layout"],
+
+            "bridgeBundles": {"vendor.js":"\/release\/1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35\/js-src\/vendor.4f245587.js","social-posts.css":"\/release\/1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35\/js-src\/social-posts.1e8b3461.css","social-posts.js":"\/release\/1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35\/js-src\/social-posts.1e8b3461.js","paywall.css":"\/release\/1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35\/js-src\/paywall.1e8b3461.css","paywall.js":"\/release\/1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35\/js-src\/paywall.1e8b3461.js","campaign-calendar.css":"\/release\/1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35\/js-src\/campaign-calendar.1e8b3461.css","campaign-calendar.js":"\/release\/1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35\/js-src\/campaign-calendar.1e8b3461.js"},
+
+            "googleOAuth2": {
+                "clientId": "964489109950.apps.googleusercontent.com",
+                "browserKey": "AIzaSyDHWeEm7vJ952wojVZbYhY5gg7xH5RW7oU",
+            },
+        });
+
+                lang.mixin(user, {
+            '__csrfToken': "67c90cbe6145b4fcfc897eccb9f9cffdac3de8f3",
+
+            'role': "owner",
+
+            'type': "Free Trial",
+
+            'userId': 121668790,
+
+            'loginId': 130937226,
+
+            'email': "Michael.oshineye@gmail.com",
+
+            'settings': {
+                'pageSize': "25",
+                'fileManagerShowGrid': true            },
+
+                            'avatarUrl': "https:\/\/secure.gravatar.com\/avatar\/494b54891eb4ef11b8b664f451b4a5f2.jpg?s=300&d=https%3A%2F%2Fcdn-images.mailchimp.com%2Ficons%2Fletter-avatars%2Fm.png",
+            
+            'pro': false,
+
+            'pro_import_complete': false,
+
+            'flags': ["mobile.android.5.7.subscribers_new_pager","mobile.android.5.6.add_contact","mobile.iphone.5.6.explore_phase_2","mobile.android.5.6.explore_phase_2","mobile.iphone.5.5.explore_tab","mobile.android.5.5.explore_tab","mobile.android.5.5.report_detail_ecomm_fragment_mvvm","mobile.android.5.5.notification_settings_mvvm","mobile.iphone.5.5.one_list_onboarding","mobile.android.5.5.one_list_onboarding","mobile.iphone.5.5.audience_settings_update","mobile.android.5.5.audience_settings_update","mobile.iphone.5.5.audience_tab_update","mobile.android.5.5.refresh_audience_tab","mobile.android.5.5.audience_tab_update","mobile.iphone.5.6.social_reporting","mobile.android.5.6.social_reporting","compliance_cross_account_gallery_policy","compliance_mcuribl_alternate_unroller","compliance_list_form_template_force_default_flag","zendesk_chat_required_fields","delivery_dkim_lowercase_i_tag","adyen_turnoff","channels.square.no_product_block_usage","channels.postcards_usabilla_survey","channels.google_analytics_v3","channels.twitter_verify_connection","channels.confetti","gdpr.require_fields","automations_social_post","automation_front_door_left_slat","met_mctx_open_click_tracking","ignore_egp_spam_trap","zendesk_customer_tier","zendesk_customer_tier_chat","no_user_chat","facebook_api_upgrade","mcadmin_okta","ads_fb_retargeting","refactor_high_vol_send","save_last_api_activity","mandrill_signup_permitted","speed_up_ecomm_category_query","subscribe_post_throttler_logging","mcadmin_delete_store_button","save_customer_within_list_management","partner_platform_api_utma","partner_platform_api_root_ping","shopify_marketing_event_outreach","shopify_marketing_event_ad","ecommerce_customer_calculations","pylp_ad_reporting","fb_ad_gifs","fb_pixel_creation","facebook.ads.publishing_enabled","retry_login_cacheclient","nd.circuit_breaker.wind_down","nd.shopsync.update_source","sites.tos_feature_pauses","eventbrite_affiliate_links","ecommerce_transactional_opt_in","enable_pfree_chat_support","gpaid.usabilla_survey_cookie","segmentation_feature_parity_batch2","segmentation_consumers_read_committed","paypal_slab_removal","ga_reports_fix","revenue.log_retier_opportunities","adyen_client_guzzle","dkim_options","revenue.retier_notification","revenue.net_new_free_on_whole_audience_count","gdpr.link_tracking","remove_login_flashblock","front_end_rum","add_tag_api_logging","billing_replace_deprecated","text_filter_html_removal","partner_exp.video","get_content_from_url_guzzle","mcmta_client_guzzle","security.login_cookie_test_removal","no_reply_billing","gpaid.post_import_banner_audience_size","mobile_content_selection","improve_landing_page_stats","gpaid.use_order_payment_service","gpaid.use_order_payment_service_for_dlocal","automations_lazily_load_settings_html","user_setting_dne","user_setting_exists","gact.usabilla_neopolitan","mc_hash_db_exists_templates","automation_optimize_ux_for_tags","crm_process_updates","template_styles_caching","am.understand.audience_dashboard_layout"] || {},
+
+            'policy': {"seat":{"max-instances":1,"category-restrictions":[{"name":"role","allowed-values":["owner"]}]},"template":{"category-restrictions":[{"name":"category","allowed-values":["basic_layouts","basic_themes"]}]},"audience":{"max-instances":1},"automation":{"category-restrictions":[{"name":"workflow","allowed-values":["abandonedBrowse","abandonedCart","categoryFollowup","custom","emailFollowup","productFollowup","purchaseFollowup","reengageSupporters","singleWelcome","sitePopupThankYou","tagAdd","groupAddSingle","groupRemoveSingle","topSupportersSingle","firstTimeCustomersSingle","bestCustomersSingle","reengageCustomersSingle","apiSingle","birthdaySingle","dateAddedSingle","recurringEventSingle","specialEventSingle","eventApi"]}]},"automation_step":{"max-instances":1},"campaign":{"category-restrictions":[{"name":"type","allowed-values":["regular","plaintext","rss","trans","auto","automation","reconfirm","tx"]}]}},
+
+            'userLevel': "free",
+
+            'isAnyEcomm': false,
+
+            'hasPaid': false,
+
+            'currencySymbol': "$",
+
+            'currencyCode': "USD",
+
+            'currencyLocale': "en-US",
+
+            'timezoneLabel': "Eastern Time",
+
+            'timezoneOffset': -4,
+
+            'hasVerifiedCustomDomain': false,
+
+            'isActivelyPaying': false,
+
+            'isActivelyPayingEachMonth': false,
+
+            'isBrandedBundleSubscriber': false,
+
+            'isCurrencySymbolBehindAmount': false,
+
+            'mustTrackLinks': true,
+
+            'isGoalAvailable': false,
+
+            'isGoalEnabled': false,
+
+            'canSend': true,
+
+            'freeLimit': 2000,
+
+            'whyNotSend': "There are some issues which might impact your ability to send.  <a class=\"nowrap\" href=\"https:\/\/us3.admin.mailchimp.com\/account#issues\">Learn more about your account status<\/a>.",
+
+            'whyNotSendTitle': "Sending Disabled",
+
+            'isPaused': false,
+
+            'sentToday': 0,
+
+            'isLimitedTrial': true,
+
+            'canSendFree': true,
+
+            'isPayAsYouGo': false,
+
+            'brandLogoUrl': "https:\/\/cdn-images.mailchimp.com\/template_images\/gallery\/logo@2x.png",
+
+            'isND': false,
+
+            'isBootstrapped': true,
+
+            'appVersion': "1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35",
+
+            'dataExportsAllowed': true,
+
+            'websiteLogoUrl': "",
+
+            'canSeePaywall': true,
+
+            'hasPartnershipPlan': false,
+
+        });
+        
+    });
+        require([
+        "vendor/bugsnag/bugsnag",
+        "mojo/user",
+    ], function (bugsnag, user) {
+        bugsnag.endpoint = "https:\/\/bugsnag-notify.mailchimp.com\/js";
+        bugsnag.apiKey = "29f7c1fcbc19f93274b6fae7d4ab0aa1";
+        bugsnag.autoNotify = true;
+        bugsnag.user = {
+            id: user.userId,
+            type: user.type,
+        };
+        bugsnag.appVersion = user.appVersion;
+        /*
+        [FP-157]: This field is for FP team to identify errors that
+        get triggered from webpack-built dojo bundles.
+        beforeNotify is a field that applies to the older version of
+        bugsnag that we currently use for dojo code. For newer version,
+        use `beforeSend`.
+        */
+        bugsnag.beforeNotify = function(payload) {
+            if (/js-legacy/.test(payload.stacktrace)) {
+                /* we currently have a device field in metaData
+                so we would not want to override it */
+                if (payload.metaData) {
+                    payload.metaData.bundle = 'webpack'
+                } else {
+                    payload.metaData = {
+                        bundle: 'webpack',
+                    };
+                }
+            }
+        };
+    });
+
+    require([
+        "dojo/Deferred",
+        "vendor/bugsnag/bugsnag",
+    ], function (Deferred, bugsnag) {
+        Deferred.instrumentRejected = function (error, handled, rejection, deferred) {
+            if (handled === true) {
+                return;
+            }
+
+            if (typeof error === "string") {
+                bugsnag.notify(error);
+            } else if (error instanceof Error) {
+                bugsnag.notifyException(error);
+            } else {
+                bugsnag.notify("UnhandledDeferredRejection", error);
+            }
+        };
+    });
+    </script><script type="text/javascript">
+    require(["mojo/rum"], function (rum) {
+        rum("hmac.aecc326da5b62c2dbd0c5d8c91a0fe4dd43ebb719cf829f1fa620e95147bbbe3.index-index")
+    });
+</script><script type="text/javascript">
+    require([
+        "mojo/widgets/Notifications",
+        "mojo/keep-alive"
+    ]);
+</script><script type="text/javascript" src="/release/1.1.18dd4c87d88914869eab8a53f3d2e94e8a84aca35/js/swfobject.js"></script><script type="text/javascript">
+        require([
+            "dojo/query",
+            "dojo/dom-class",
+            "dojo/_base/xhr",
+            "dojo/window",
+
+            // custom libs which perform work on dom ready
+            "mojo/touch/no-delay",
+            "mojo/app/common/sticky-hoverlist",
+            "dojo/domReady!"
+        ], function(query, domClass, xhr, win){
+        });
+
+    </script><script type="text/javascript">
+    var reauth = {
+        url: '/login/reauthenticate?username=Michael.Oshineye@gmail.com&user_id=121668790',
+        rememberMe : true    };
+
+    dojo.require('mojo.ReauthDialog');
+
+    // Override dojo's xhr to handle 403 status
+    (function(){
+        var oldXHR = dojo.xhr;
+        dojo.xhr = function() {
+            return oldXHR.apply(dojo, arguments).addErrback(function(err) {
+                switch(err.xhr.status) {
+                    case 403:
+                        window.top.mojo.ReauthDialog.show();
+                        break;
+                }
+            });
+        };
+    })();
+</script><script type="text/javascript">
+    // Handle 403 errors when making ajax calls through dojo/request which is the newer module.
+    require([
+        "dojo/request",
+        "dojo/request/notify"
+    ], function(request, notify) {
+        notify("error", function( error ) {
+            switch(error.response.status) {
+                case 403:
+                    window.top.mojo.ReauthDialog.show();
+                    break;
+            }
+        });
+    });
+</script><script type="text/javascript">require(['mojo/views/index/onboarding-dashboard'], function(Module) {
+                    window._mc = new Module({"showMCJsTermsModal":false,"billingCheckout":null,"recommendedPlan":{"low":"0","high":"500","amount":"10.00","type":"credits","visible":"Y","active":"Y","monthly_plan_id":1306},"checklist":{"setupAccount":true,"designEmail":true,"addContacts":false,"sendEmail":false},"showBonusStep":false,"skippedFinalStep":false,"checklistData":{"experiments":[],"firstName":"michael","defaultListId":653525,"isEcommerceUser":false,"hasConnectedSite":false}});
+                    window._mc.run();
+                });</script><script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1066381306;
+    var google_conversion_label = "KC52CMbBnQQQ-t--_AM";
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+</script><script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js"></script><script type="text/javascript">
+var axel = Math.random() + "";
+var a = axel * 10000000000000;
+document.write('<img width="1" height="1" border="0" src="https://d.agkn.com/pixel/7902/?che=' + a + '&type=IH96"/>');
+</script><script type="text/javascript">
+        require([
+            "mojo/views/index/PersistentUpgradeButton"
+        ], function(persistentUpgradeButton) {
+            persistentUpgradeButton("[data-mc-el='launchTopNavigationUBE']",
+                { location: 'top_nav', upgrade_reason: 'persistent_upgrade', button_text: 'upgrade_now' });
+        });
+    </script><script type="text/javascript">
+    require([
+        "mojo/views/index/PersistentUpgradeButton"
+    ], function(persistentUpgradeButton) {
+        persistentUpgradeButton("[data-mc-el='launchAccountNavUBE']",
+            { location: 'account_dropdown', upgrade_reason: 'persistent_upgrade', button_text: 'upgrade_now' });
+    });
+</script><script type="text/javascript">
+    require([
+        "dojo/query",
+        "dojo/dom-class",
+        "dojo/request",
+        "dojo/on",
+
+        "mojo/url",
+    ], function(
+        query, domClass, request, on,
+        mUrl
+    ) {
+        var close_btn           = query("[data-mc-el='closeButtonNode']")[0];
+        var update_cc_info_btn  = query("[data-mc-el='updateCCInfoNode']")[0];
+        var cc_update_modal     = query("[data-mc-el='mc-module-dialog']")[0];
+
+        if (close_btn && update_cc_info_btn && cc_update_modal) {
+            on(close_btn, "click", function() {
+                domClass.add(cc_update_modal, "display--none");
+                request.get(mUrl.toUrl("/account/credit-modal-cooldown"))
+                .then(function (res) {
+                    cc_update_modal.parentNode.removeChild(cc_update_modal);
+                    dojo.destroy(cc_update_modal);
+                }, function (err) {
+                    cc_update_modal.parentNode.removeChild(cc_update_modal);
+                    dojo.destroy(cc_update_modal);
+                });
+            });
+
+            on(update_cc_info_btn, "click", function() {
+                domClass.add(cc_update_modal, "display--none");
+                request.get(mUrl.toUrl("/account/credit-modal-cooldown"))
+                .then(function (res) {
+                    cc_update_modal.parentNode.removeChild(cc_update_modal);
+                    dojo.destroy(cc_update_modal);
+                }, function (err) {
+                    cc_update_modal.parentNode.removeChild(cc_update_modal);
+                    dojo.destroy(cc_update_modal);
+                });
+            });
+        };
+    });
+</script><script type="text/javascript">
+    require([
+        "dojo/dom-attr",
+        "dojo/_base/window",
+        "dojo/domReady!"
+    ], function(domAttr, win){
+        domAttr.set(win.doc.documentElement, "lang", "en");
+    });
+</script></body> </html>
